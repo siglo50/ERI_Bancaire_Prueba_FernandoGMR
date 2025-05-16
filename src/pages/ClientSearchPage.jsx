@@ -107,7 +107,7 @@ const ClientSearchPage = () => {
                 <tr key={client.id}>
                   <td>{client.id}</td>
                   <td>
-                    <Link to={`/clients/${client.id}`}>{client.name}</Link>
+                    <Link to={`/client/${client.id}`}>{client.name}</Link>
                   </td>
                   <td>{client.clientType}</td>
                   <td>{client.manager}</td>
@@ -118,10 +118,10 @@ const ClientSearchPage = () => {
                     </Badge>
                   </td>
                   <td>
-                    <Button variant="link" as={Link} to={`/clients/${client.id}`} title="View Details" className="p-1 me-1">
+                    <Button variant="link" as={Link} to={`/client/${client.id}`} title="View Details" className="p-1 me-1">
                       <FontAwesomeIcon icon={faEye} />
                     </Button>
-                    <Button variant="link" as={Link} to={`/clients/${client.id}/edit`} title="Edit Client" className="p-1 me-1">
+                    <Button variant="link" as={Link} to={`/client/${client.id}/edit`} title="Edit Client" className="p-1 me-1">
                       <FontAwesomeIcon icon={faEdit} />
                     </Button>
                     <Button variant="link" title="Delete Client" className="p-1 text-danger">

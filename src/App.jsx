@@ -39,8 +39,14 @@ function App() {
               {/* Ruta inicial redirige al primer cliente por defecto o a una página de búsqueda */}
               
               {/* Rutas para Cliente */}
-              <Route path="/client/:clientId" element={<ClientDetailsPage />} />
-              <Route path="/client/:clientId/accounts" element={<AccountListPage />} />
+              <Route path="/client/:clientId" element={<ClientDetailsPage />}>
+                {/* Nested route for accounts, will render in ClientDetailsPage's Outlet */}
+                <Route path="accounts" element={<AccountListPage />} /> 
+                {/* We can add other nested routes for other tabs here if needed */}
+                {/* e.g., <Route path="general-info" element={<ClientGeneralInfoComponent />} /> */}
+                {/* If no sub-path, ClientDetailsPage can show default content or redirect */}
+                <Route index element={<Navigate to="accounts" replace />} /> {/* Default to accounts tab or general-info */} 
+              </Route>
               
               {/* Rutas para Cuenta */}
               <Route path="/client/:clientId/account/:accountId" element={<AccountCharacteristicsPage />} />

@@ -40,7 +40,7 @@ const AccountListPage = () => {
       <Card>
         <Card.Body>
           <Card.Text>No accounts found for this client.</Card.Text>
-          <Button variant="primary-eri btn-sm" as={Link} to={`/clients/${clientId}/accounts/new`}>
+          <Button variant="primary-eri btn-sm" as={Link} to={`/client/${clientId}/account/new`}>
             <FontAwesomeIcon icon={faPlusCircle} className="icon-action" /> Add New Account
           </Button>
         </Card.Body>
@@ -53,7 +53,7 @@ const AccountListPage = () => {
       {/* This title could be part of the parent ClientDetailsPage structure or here */}
       {/* <h4 className="mb-3">Client Accounts</h4> */}
       <div className="d-flex justify-content-end mb-3">
-        <Button variant="success btn-sm" as={Link} to={`/clients/${clientId}/accounts/new`}>
+        <Button variant="success btn-sm" as={Link} to={`/client/${clientId}/account/new`}>
             <FontAwesomeIcon icon={faPlusCircle} className="icon-action" /> New Account
         </Button>
       </div>
@@ -74,7 +74,7 @@ const AccountListPage = () => {
           {currentAccounts.map(account => (
             <tr key={account.id}>
               <td>
-                <Link to={`/clients/${clientId}/accounts/${account.id}`}>{account.id}</Link>
+                <Link to={`/client/${clientId}/account/${account.id}`}>{account.id}</Link>
               </td>
               <td>{account.category}</td> {/* Using category as 'Type' from screenshot */} 
               <td>{account.itemDescription}</td>
@@ -87,10 +87,10 @@ const AccountListPage = () => {
               </td>
               <td>{new Date(account.dateOfLastMovement).toLocaleDateString()}</td>
               <td>
-                <Button variant="link" as={Link} to={`/clients/${clientId}/accounts/${account.id}`} title="View Account Details" className="p-1 me-1">
+                <Button variant="link" as={Link} to={`/client/${clientId}/account/${account.id}`} title="View Account Details" className="p-1 me-1">
                   <FontAwesomeIcon icon={faEye} />
                 </Button>
-                <Button variant="link" as={Link} to={`/clients/${clientId}/accounts/${account.id}/transactions`} title="View Transactions" className="p-1">
+                <Button variant="link" as={Link} to={`/client/${clientId}/account/${account.id}/transactions`} title="View Transactions" className="p-1">
                   <FontAwesomeIcon icon={faFileInvoiceDollar} />
                 </Button>
               </td>

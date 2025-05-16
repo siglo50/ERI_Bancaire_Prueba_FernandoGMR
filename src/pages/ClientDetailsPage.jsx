@@ -50,7 +50,7 @@ const ClientDetailsPage = () => {
   return (
     <div className="page-content">
       <div className="d-flex justify-content-between align-items-center mb-3">
-        <Link to="/clients" className="btn btn-outline-secondary btn-sm">
+        <Link to="/search" className="btn btn-outline-secondary btn-sm">
           <FontAwesomeIcon icon={faArrowLeft} className="icon-action" /> Back to Search
         </Link>
         <Button variant="primary-eri btn-sm" as={Link} to={`/clients/${clientId}/edit`}>
