@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
@@ -11,15 +11,22 @@ import './App.css';
 function App() {
   // Simulamos un estado para el cliente y cuenta seleccionados
   // Esto normalmente vendría de un contexto global o de la URL
-  const [currentClientId, setCurrentClientId] = React.useState('015454156');
-  const [currentClientName, setCurrentClientName] = React.useState('Cliente 11111111 NC');
-  const [currentAccountId, setCurrentAccountId] = React.useState('015454156909782034');
+  const [currentClientId] = React.useState('015454156');
+  const [currentClientName] = React.useState('Cliente 11111111 NC');
+  const [currentAccountId] = React.useState('015454156909782034');
+
+  // State for sidebar collapse
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
 
   return (
     <Router>
       <div className="App">
-        <Sidebar />
-        <div className="main-content">
+        <Sidebar isCollapsed={isSidebarCollapsed} toggleSidebar={toggleSidebar} />
+        <div className={`main-content ${isSidebarCollapsed ? 'main-content-collapsed' : ''}`}>
           <Topbar 
             clientName={currentClientName} 
             clientId={currentClientId}

@@ -22,6 +22,10 @@
     margin-bottom: 10px; /* Reduced margin */
     border-bottom: 1px solid var(--eri-sidebar-active-bg);
     text-align: center;
+    position: relative; /* For absolute positioning of toggle button */
+    display: flex; /* To align h3 and button */
+    justify-content: space-between; /* Puts h3 left, button right */
+    align-items: center;
   }
   
   .sidebar-header h3 { /* Or a logo */
@@ -316,4 +320,76 @@
   .input-group .form-control:focus {
       border-color: var(--eri-primary-red-light);
       box-shadow: 0 0 0 0.2rem rgba(217, 4, 41, 0.25);
+  }
+  
+  /* Collapsible Sidebar Styles */
+  .sidebar-collapsed {
+    width: 80px; /* Collapsed width */
+  }
+  
+  .sidebar-collapsed .sidebar-header h3 {
+    display: none; /* Hide header text when collapsed */
+  }
+  
+  .sidebar-collapsed .sidebar-nav li a span,
+  .sidebar-collapsed .sidebar-footer button span {
+    display: none; /* Hide text, leave icons */
+  }
+  
+  .sidebar-collapsed .sidebar-nav li a .nav-icon {
+    margin-right: 0; /* Remove margin when text is hidden */
+    /* Optional: center icon if text is hidden and link takes full width */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .sidebar-collapsed .sidebar-footer button .nav-icon {
+      margin-right: 0;
+  }
+  
+  .sidebar-collapsed .sidebar-header {
+    padding: 15px 10px; /* Adjust padding for collapsed state */
+    justify-content: center; /* Center the toggle button if it's the only child visible */
+  }
+  
+  .sidebar-toggle-btn {
+    background: transparent;
+    border: none;
+    color: var(--eri-sidebar-text);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    top: 15px;
+    right: 15px; /* Position top right within header */
+    z-index: 1100; /* Ensure it's above other sidebar content */
+  }
+  
+  .sidebar-collapsed .sidebar-toggle-btn {
+    /* Adjust if needed when collapsed, e.g., if header structure changes significantly */
+    /* For now, assuming it remains in the header */
+    position: static; /* Or adjust positioning */
+    display: block;
+    margin: 0 auto; /* Center the button */
+  }
+  
+  .sidebar-header {
+    position: relative; /* For absolute positioning of toggle button */
+    display: flex; /* To align h3 and button */
+    justify-content: space-between; /* Puts h3 left, button right */
+    align-items: center;
+  }
+  
+  .sidebar-collapsed .sidebar-header {
+    padding: 15px 0; /* Reduced padding vertically */
+    height: 60px; /* Assuming topbar height for consistency */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sidebar-collapsed .sidebar-toggle-btn {
+    position: static; /* No longer absolute within the header */
+    font-size: 1.3rem; /* Match icon size in nav */
   }
