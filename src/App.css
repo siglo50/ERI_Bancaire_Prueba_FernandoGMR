@@ -20,7 +20,7 @@
   .sidebar-header {
     padding: 15px 20px;
     margin-bottom: 10px; /* Reduced margin */
-    border-bottom: 1px solid var(--eri-sidebar-active-bg);
+    border-bottom: 1px solid var(--eri-sidebar-divider-color);
     text-align: center;
     position: relative; /* For absolute positioning of toggle button */
     display: flex; /* To align h3 and button */
@@ -78,7 +78,7 @@
   
   .sidebar-footer {
     padding: 15px 20px;
-    border-top: 1px solid var(--eri-sidebar-active-bg);
+    border-top: 1px solid var(--eri-sidebar-divider-color);
     text-align: center;
     flex-shrink: 0;
   }
@@ -95,8 +95,8 @@
   }
   
   .sidebar-footer button:hover {
-    background-color: var(--eri-primary-blue-light);
-    color: var(--eri-sidebar-bg);
+    background-color: var(--eri-primary-red-dark);
+    color: var(--eri-neutral-white);
   }
   
   .main-content {
@@ -158,19 +158,26 @@
   }
   
   .topbar-icons .btn-icon {
-    color: var(--eri-topbar-icon);
-    background: transparent;
-    border: none;
-    font-size: 1.2rem;
-    margin-left: 10px; /* Reduced margin */
-    padding: 8px;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
-  }
-  .topbar-icons .btn-icon:hover {
-    background-color: rgba(255,255,255,0.1);
+    color: var(--eri-primary-red); /* Red icon color */
+    background-color: var(--eri-neutral-white); /* White background */
+    border: 1px solid var(--eri-primary-red-light); /* Light red border */
+    font-size: 1rem; /* Adjusted icon size */
+    margin-left: 8px; /* Spacing between icons */
+    padding: 0; /* Remove default padding */
+    width: 32px; /* Fixed width for square shape */
+    height: 32px; /* Fixed height for square shape */
+    border-radius: 4px; /* Slightly rounded corners for square look */
+    display: inline-flex; /* Allows centering of the icon */
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
   
+  .topbar-icons .btn-icon:hover {
+    background-color: var(--eri-neutral-grey-light); /* Light grey background on hover */
+    border-color: var(--eri-primary-red); /* Stronger red border on hover */
+    color: var(--eri-primary-red-dark); /* Darker red icon on hover */
+  }
   
   .topbar-user {
     display: flex;

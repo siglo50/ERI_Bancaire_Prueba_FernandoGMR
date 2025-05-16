@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Breadcrumb } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faEnvelope, faUserCircle, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faFilter, faBuilding, faSearch, faUserCircle, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 // Helper function to generate breadcrumbs (simplified version)
 const generateBreadcrumbs = (pathname) => {
@@ -46,12 +46,16 @@ const Topbar = () => {
       <div className="topbar-right">
         <div className="topbar-icons">
           <button className="btn-icon">
-            <FontAwesomeIcon icon={faBell} />
-            {/* Optional: Add a badge for notifications */}
-            {/* <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">3</span> */}
+            <FontAwesomeIcon icon={faUser} />
           </button>
           <button className="btn-icon">
-            <FontAwesomeIcon icon={faEnvelope} />
+            <FontAwesomeIcon icon={faFilter} />
+          </button>
+          <button className="btn-icon">
+            <FontAwesomeIcon icon={faBuilding} />
+          </button>
+          <button className="btn-icon">
+            <FontAwesomeIcon icon={faSearch} />
           </button>
         </div>
         <div className="topbar-user">

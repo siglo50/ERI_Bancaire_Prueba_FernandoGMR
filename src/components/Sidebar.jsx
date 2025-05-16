@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSearch, 
-  faUsers,
   faBuildingColumns,
   faFileInvoiceDollar,
   faChartBar,
@@ -30,12 +29,12 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
               {!isCollapsed && <span>Client Search</span>}
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/clients" title="Clients">
               <FontAwesomeIcon icon={faUsers} className="nav-icon" /> 
               {!isCollapsed && <span>Clients</span>}
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/accounts-overview" title="Accounts Overview"> 
               <FontAwesomeIcon icon={faBuildingColumns} className="nav-icon" /> 

@@ -72,29 +72,7 @@ const AccountListPage = () => {
         </thead>
         <tbody>
           {currentAccounts.map(account => (
-            <tr key={account.id}>
-              <td>
-                <Link to={`/client/${clientId}/account/${account.id}`}>{account.id}</Link>
-              </td>
-              <td>{account.category}</td> {/* Using category as 'Type' from screenshot */} 
-              <td>{account.itemDescription}</td>
-              <td>{account.currencyAbbreviation}</td>
-              <td className="text-end">{account.balance.toLocaleString(undefined, { style: 'currency', currency: account.currency })}</td>
-              <td>
-                <Badge bg={account.status === 'Active' ? 'success' : 'danger'}>
-                  {account.status}
-                </Badge>
-              </td>
-              <td>{new Date(account.dateOfLastMovement).toLocaleDateString()}</td>
-              <td>
-                <Button variant="link" as={Link} to={`/client/${clientId}/account/${account.id}`} title="View Account Details" className="p-1 me-1">
-                  <FontAwesomeIcon icon={faEye} />
-                </Button>
-                <Button variant="link" as={Link} to={`/client/${clientId}/account/${account.id}/transactions`} title="View Transactions" className="p-1">
-                  <FontAwesomeIcon icon={faFileInvoiceDollar} />
-                </Button>
-              </td>
-            </tr>
+            <tr key={account.id}><td><Link to={`/client/${clientId}/account/${account.id}`}>{account.id}</Link></td><td>{account.category}</td><td>{account.itemDescription}</td><td>{account.currencyAbbreviation}</td><td className="text-end">{account.balance.toLocaleString(undefined, { style: 'currency', currency: account.currency })}</td><td><Badge bg={account.status === 'Active' ? 'success' : 'danger'}>{account.status}</Badge></td><td>{new Date(account.dateOfLastMovement).toLocaleDateString()}</td><td><Button variant="link" as={Link} to={`/client/${clientId}/account/${account.id}`} title="View Account Details" className="p-1 me-1"><FontAwesomeIcon icon={faEye} /></Button><Button variant="link" as={Link} to={`/client/${clientId}/account/${account.id}/transactions`} title="View Transactions" className="p-1"><FontAwesomeIcon icon={faFileInvoiceDollar} /></Button></td></tr>
           ))}
         </tbody>
       </Table>

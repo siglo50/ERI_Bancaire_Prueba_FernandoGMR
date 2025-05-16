@@ -66,11 +66,12 @@ code {
   --eri-neutral-white: #ffffff;
 
   /* UI Element Specific Colors based on screenshots & palette */
-  --eri-sidebar-bg: #001f3f; /* Dark Blue */
+  --eri-sidebar-bg: var(--eri-primary-red); /* Changed from #001f3f */
   --eri-sidebar-text: var(--eri-neutral-white);
   --eri-sidebar-icon: var(--eri-neutral-white);
-  --eri-sidebar-active-bg: #00356C; /* Slightly lighter blue for active item */
+  --eri-sidebar-active-bg: var(--eri-primary-red-dark); /* Changed from #00356C */
   --eri-sidebar-active-border: var(--eri-primary-red); /* Red accent for active link */
+  --eri-sidebar-divider-color: var(--eri-neutral-white); /* New variable for internal dividers */
 
   --eri-topbar-bg: var(--eri-primary-red);
   --eri-topbar-text: var(--eri-neutral-white);

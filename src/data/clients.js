@@ -93,3 +93,9 @@ export const clients = [
   ];
   
   export const getClientById = (id) => clients.find(client => client.id === id);
+
+  export const searchClientsByName = (name) => {
+    if (!name) return [];
+    const searchTerm = name.toLowerCase();
+    return clients.filter(client => client.name.toLowerCase().includes(searchTerm));
+  };

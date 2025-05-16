@@ -6,6 +6,8 @@ import ClientSearchPage from './pages/ClientSearchPage';
 import ClientDetailsPage from './pages/ClientDetailsPage';
 import AccountListPage from './pages/AccountListPage';
 import AccountCharacteristicsPage from './pages/AccountCharacteristicsPage';
+import AccountsOverviewPage from './pages/AccountsOverviewPage';
+import TransactionsReportPage from './pages/TransactionsReportPage';
 import './App.css';
 
 function App() {
@@ -52,6 +54,12 @@ function App() {
               <Route path="/client/:clientId/account/:accountId" element={<AccountCharacteristicsPage />} />
               {/* Puedes agregar más rutas como movimientos de cuenta aquí */}
               {/* <Route path="/client/:clientId/account/:accountId/movements" element={<AccountMovementsPage />} /> */}
+
+              {/* Route for Accounts Overview */}
+              <Route path="/accounts-overview" element={<AccountsOverviewPage />} />
+
+              {/* Route for Transactions Report */}
+              <Route path="/transactions-report" element={<TransactionsReportPage />} />
 
               {/* Ruta por defecto o página no encontrada */}
               <Route path="*" element={<div><h2>404 Not Found</h2><p>La página que buscas no existe.</p></div>} />
