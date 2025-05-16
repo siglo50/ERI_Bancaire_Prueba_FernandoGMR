@@ -1,0 +1,101 @@
+/* src/index.css */
+/* Import Bootstrap CSS */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5; /* A soft general background color */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar (optional, for aesthetic improvement) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Adjustments for Bootstrap to integrate better */
+.nav-tabs .nav-link {
+  color: #495057;
+}
+
+.nav-tabs .nav-link.active {
+  color: #007bff; /* Default Bootstrap active color, can be overridden */
+  border-color: #dee2e6 #dee2e6 #fff;
+}
+
+/* Corporate colors (can be defined as CSS variables for easier management) */
+:root {
+  --eri-primary-red: #D90429; /* Main red from the screenshot */
+  --eri-primary-red-dark: #A0001A; /* Darker shade of red */
+  --eri-primary-red-light: #ffb6c1; /* Light Pinkish from screenshot */
+
+  --eri-primary-blue: #00356C; /* Primary blue from palette */
+  --eri-primary-blue-dark: #001f3f; /* Darker blue for sidebar bg */
+  --eri-primary-blue-light: #6cb2f5; /* Lighter blue for accents */
+
+  --eri-complementary-green: #00835C; /* Green from palette */
+  --eri-complementary-yellow: #ffc107; /* Yellow from palette */
+
+  --eri-neutral-grey-light: #f8f9fa;
+  --eri-neutral-grey-medium: #e9ecef;
+  --eri-neutral-grey-dark: #6c757d;
+  --eri-neutral-black: #212529;
+  --eri-neutral-white: #ffffff;
+
+  /* UI Element Specific Colors based on screenshots & palette */
+  --eri-sidebar-bg: #001f3f; /* Dark Blue */
+  --eri-sidebar-text: var(--eri-neutral-white);
+  --eri-sidebar-icon: var(--eri-neutral-white);
+  --eri-sidebar-active-bg: #00356C; /* Slightly lighter blue for active item */
+  --eri-sidebar-active-border: var(--eri-primary-red); /* Red accent for active link */
+
+  --eri-topbar-bg: var(--eri-primary-red);
+  --eri-topbar-text: var(--eri-neutral-white);
+  --eri-topbar-icon: var(--eri-neutral-white);
+
+  --eri-button-primary-bg: var(--eri-primary-red);
+  --eri-button-primary-text: var(--eri-neutral-white);
+  --eri-button-primary-hover-bg: var(--eri-primary-red-dark);
+
+  --eri-button-secondary-bg: var(--eri-primary-blue);
+  --eri-button-secondary-text: var(--eri-neutral-white);
+  --eri-button-secondary-hover-bg: #002a54; /* Darker shade of primary blue */
+
+  --eri-tab-active-border: var(--eri-primary-red);
+  --eri-tab-text: var(--eri-neutral-black);
+  --eri-tab-active-text: var(--eri-primary-red);
+
+  --eri-section-highlight-bg: #ffe3e9; /* Light pink background for sections like "Client 015454156..." */
+  --eri-section-highlight-border: #f8c6ce;
+
+  --eri-table-header-bg: var(--eri-neutral-grey-medium);
+  --eri-status-active-bg: #d4edda; /* Light green for 'Active' status */
+  --eri-status-active-text: #155724;
+  --eri-status-inactive-bg: #f8d7da; /* Light red for 'Inactive'/'Blocked' status */
+  --eri-status-inactive-text: #721c24;
+
+  --eri-border-color: #dee2e6;
+}

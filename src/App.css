@@ -1,0 +1,319 @@
+/* src/App.css */
+.App {
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* Prevents scrollbars at the App level */
+  }
+  
+  .sidebar {
+    width: 260px; /* Slightly wider for comfort */
+    background-color: var(--eri-sidebar-bg);
+    color: var(--eri-sidebar-text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .sidebar-header {
+    padding: 15px 20px;
+    margin-bottom: 10px; /* Reduced margin */
+    border-bottom: 1px solid var(--eri-sidebar-active-bg);
+    text-align: center;
+  }
+  
+  .sidebar-header h3 { /* Or a logo */
+    color: var(--eri-sidebar-text);
+    margin: 0;
+    font-size: 1.6rem; /* Slightly larger */
+    font-weight: bold;
+  }
+  
+  .sidebar-nav {
+    flex-grow: 1;
+    overflow-y: auto; /* Scroll for many items */
+  }
+  
+  .sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-nav li a {
+    display: flex; /* Use flex for icon alignment */
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--eri-sidebar-text);
+    text-decoration: none;
+    transition: background-color 0.2s ease, padding-left 0.2s ease, border-left-color 0.2s ease;
+    border-left: 4px solid transparent; /* Active indicator */
+    font-size: 0.95rem;
+  }
+  
+  .sidebar-nav li a:hover {
+    background-color: var(--eri-sidebar-active-bg);
+    border-left-color: var(--eri-sidebar-active-border);
+  }
+  
+  .sidebar-nav li a.active {
+    background-color: var(--eri-sidebar-active-bg);
+    border-left-color: var(--eri-sidebar-active-border);
+    font-weight: 600;
+  }
+  
+  .sidebar-nav li a .nav-icon {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    color: var(--eri-sidebar-icon);
+    font-size: 1.1em;
+  }
+  
+  .sidebar-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--eri-sidebar-active-bg);
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  .sidebar-footer button {
+    background-color: var(--eri-sidebar-active-bg);
+    color: var(--eri-sidebar-text);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sidebar-footer button:hover {
+    background-color: var(--eri-primary-blue-light);
+    color: var(--eri-sidebar-bg);
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevents double scrollbars */
+  }
+  
+  .topbar {
+    background-color: var(--eri-topbar-bg);
+    color: var(--eri-topbar-text);
+    padding: 0 20px; /* Adjusted padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px; /* Fixed height for topbar */
+    flex-shrink: 0; /* Prevent shrinking */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .topbar-left .breadcrumb {
+    background-color: transparent;
+    margin-bottom: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .topbar-left .breadcrumb-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .topbar-left .breadcrumb-item a {
+    color: var(--eri-topbar-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .topbar-left .breadcrumb-item a:hover {
+    text-decoration: underline;
+  }
+  
+  .topbar-left .breadcrumb-item.active {
+    color: #f0f0f0; /* Slightly dimmer for active breadcrumb item */
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .topbar-left .breadcrumb-item + .breadcrumb-item::before {
+    /* content: '>' removed, using FontAwesome icon instead in component */
+    padding: 0 0.5rem; /* Spacing for the angle icon */
+    color: var(--eri-topbar-text);
+  }
+  
+  .topbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .topbar-icons .btn-icon {
+    color: var(--eri-topbar-icon);
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    margin-left: 10px; /* Reduced margin */
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+  .topbar-icons .btn-icon:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+  
+  
+  .topbar-user {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 1px solid var(--eri-primary-red-dark);
+    font-size: 0.85rem;
+  }
+  
+  .topbar-user span {
+    margin-right: 5px;
+  }
+  
+  .page-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Enables scrolling only for page content */
+    background-color: var(--eri-neutral-grey-light);
+  }
+  
+  /* Styles for highlighted sections as in screenshots */
+  .section-highlight {
+    background-color: var(--eri-section-highlight-bg);
+    padding: 1rem; /* Use rem for scalable padding */
+    border-radius: 0.375rem; /* Bootstrap's default $border-radius */
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--eri-section-highlight-border);
+    color: var(--eri-neutral-black);
+  }
+  .section-highlight h4, .section-highlight h5 {
+      margin-bottom: 0.5rem;
+      color: var(--eri-primary-red);
+  }
+  
+  /* Custom Tab styles */
+  .custom-tabs > .nav-tabs { /* Target direct child to avoid affecting nested tabs */
+    border-bottom: 2px solid var(--eri-tab-active-border);
+    margin-bottom: 0; /* Remove default margin */
+  }
+  
+  .custom-tabs > .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .375rem;
+    border-top-right-radius: .375rem;
+    color: var(--eri-tab-text);
+    margin-right: 2px;
+    padding: 0.75rem 1.25rem; /* More padding */
+    font-weight: 500;
+    background-color: var(--eri-neutral-grey-medium);
+  }
+  
+  .custom-tabs > .nav-tabs .nav-link.active {
+    color: var(--eri-tab-active-text);
+    background-color: var(--eri-neutral-white);
+    border-color: var(--eri-tab-active-border) var(--eri-tab-active-border) var(--eri-neutral-white);
+    border-bottom: 2px solid var(--eri-neutral-white); /* To make it look "lifted" */
+    position: relative;
+    top: 1px; /* Adjust to align perfectly with the bottom border */
+  }
+  
+  .custom-tabs > .nav-tabs .nav-link:hover:not(.active) { /* Exclude active tab from hover */
+    border-color: var(--eri-neutral-grey-medium) var(--eri-neutral-grey-medium) var(--eri-tab-active-border);
+    background-color: #d8dde2; /* Slightly darker grey on hover */
+  }
+  
+  .custom-tabs > .tab-content {
+    padding: 1.5rem; /* More padding inside tab content */
+    border: 1px solid var(--eri-border-color);
+    border-top: none;
+    background-color: var(--eri-neutral-white);
+    border-bottom-left-radius: .375rem;
+    border-bottom-right-radius: .375rem;
+  }
+  
+  /* Buttons */
+  .btn-primary-eri {
+    background-color: var(--eri-button-primary-bg);
+    border-color: var(--eri-button-primary-bg);
+    color: var(--eri-button-primary-text);
+  }
+  .btn-primary-eri:hover {
+    background-color: var(--eri-button-primary-hover-bg);
+    border-color: var(--eri-button-primary-hover-bg);
+    color: var(--eri-button-primary-text);
+  }
+  
+  .btn-secondary-eri {
+    background-color: var(--eri-button-secondary-bg);
+    border-color: var(--eri-button-secondary-bg);
+    color: var(--eri-button-secondary-text);
+  }
+  .btn-secondary-eri:hover {
+    background-color: var(--eri-button-secondary-hover-bg);
+    border-color: var(--eri-button-secondary-hover-bg);
+    color: var(--eri-button-secondary-text);
+  }
+  
+  /* Tables */
+  .table th {
+    background-color: var(--eri-table-header-bg);
+    font-weight: 600; /* Bolder headers */
+  }
+  .table td, .table th {
+      vertical-align: middle;
+  }
+  
+  /* Status badges in tables */
+  .badge.bg-success {
+      background-color: var(--eri-status-active-bg) !important; /* Important to override bootstrap */
+      color: var(--eri-status-active-text) !important;
+  }
+  .badge.bg-danger, .badge.bg-warning /* For 'Inactive' or 'Blocked' */ {
+      background-color: var(--eri-status-inactive-bg) !important;
+      color: var(--eri-status-inactive-text) !important;
+  }
+  
+  
+  /* Utility for icons in buttons/links */
+  .icon-action {
+    margin-right: 0.5rem;
+  }
+  
+  /* Styling for pagination control */
+  .pagination-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+  }
+  .pagination-controls .page-item.active .page-link {
+      background-color: var(--eri-primary-red);
+      border-color: var(--eri-primary-red);
+      color: white;
+  }
+  .pagination-controls .page-link {
+      color: var(--eri-primary-red);
+  }
+  .pagination-controls .page-link:hover {
+      color: var(--eri-primary-red-dark);
+  }
+  .pagination-controls .page-item.disabled .page-link {
+      color: var(--eri-neutral-grey-dark);
+  }
+  
+  /* Input group styling */
+  .input-group .form-control:focus {
+      border-color: var(--eri-primary-red-light);
+      box-shadow: 0 0 0 0.2rem rgba(217, 4, 41, 0.25);
+  }
