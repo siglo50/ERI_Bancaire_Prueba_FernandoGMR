@@ -8,6 +8,15 @@ import AccountListPage from './pages/AccountListPage';
 import AccountCharacteristicsPage from './pages/AccountCharacteristicsPage';
 import AccountsOverviewPage from './pages/AccountsOverviewPage';
 import TransactionsReportPage from './pages/TransactionsReportPage';
+
+// Import new tab content components
+import ClientGeneralInfo from './components/client_details_tabs/ClientGeneralInfo';
+import ClientCommunication from './components/client_details_tabs/ClientCommunication';
+import ClientStatistics from './components/client_details_tabs/ClientStatistics';
+import ClientManagement from './components/client_details_tabs/ClientManagement';
+import ClientFeeClasses from './components/client_details_tabs/ClientFeeClasses';
+import ClientControl from './components/client_details_tabs/ClientControl';
+
 import './App.css';
 
 function App() {
@@ -42,12 +51,16 @@ function App() {
               
               {/* Rutas para Cliente */}
               <Route path="/client/:clientId" element={<ClientDetailsPage />}>
-                {/* Nested route for accounts, will render in ClientDetailsPage's Outlet */}
-                <Route path="accounts" element={<AccountListPage />} /> 
-                {/* We can add other nested routes for other tabs here if needed */}
-                {/* e.g., <Route path="general-info" element={<ClientGeneralInfoComponent />} /> */}
-                {/* If no sub-path, ClientDetailsPage can show default content or redirect */}
-                <Route index element={<Navigate to="accounts" replace />} /> {/* Default to accounts tab or general-info */} 
+                {/* Nested routes for tabs, will render in ClientDetailsPage's Outlet */}
+                <Route path="general-info" element={<ClientGeneralInfo />} />
+                <Route path="communication" element={<ClientCommunication />} />
+                <Route path="statistics" element={<ClientStatistics />} />
+                <Route path="management" element={<ClientManagement />} />
+                <Route path="fee-classes" element={<ClientFeeClasses />} />
+                <Route path="control" element={<ClientControl />} />
+                <Route path="accounts" element={<AccountListPage />} />
+                {/* Default tab for a client */}
+                <Route index element={<Navigate to="general-info" replace />} /> 
               </Route>
               
               {/* Rutas para Cuenta */}
