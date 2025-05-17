@@ -54,6 +54,9 @@ const TransactionsReportPage = () => {
                 onChange={(e) => setAccountIdSearch(e.target.value)}
                 onKeyPress={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleSearch(); } }}
               />
+              <Form.Text className="text-muted">
+                Example: 015454156909782034
+              </Form.Text>
             </Form.Group>
           </Col>
           <Col md={3} className="d-flex align-items-end">

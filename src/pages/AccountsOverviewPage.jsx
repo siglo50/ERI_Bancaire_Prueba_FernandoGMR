@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Table, Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faEye } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import { getClientById, searchClientsByName } from '../data/clients'; // Assuming these exist or will be created
 import { getAccountsByClientId } from '../data/accounts'; // Assuming this exists
 
@@ -67,6 +68,9 @@ const AccountsOverviewPage = () => {
                 value={searchTerm} 
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
+              <Form.Text className="text-muted">
+                Examples: ID (015454156), Name (Cliente 11111111 NC)
+              </Form.Text>
             </Form.Group>
           </Col>
           <Col md={3} className="d-flex align-items-end">
@@ -98,12 +102,17 @@ const AccountsOverviewPage = () => {
                   <th className="text-end">Balance</th>
                   <th>Status</th>
                   <th>Last Movement</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {clientAccounts.map(account => (
                   <tr key={account.id}>
-                    <td>{account.id}</td>
+                    <td>
+                      <Link to={`/client/${foundClient.id}/account/${account.id}`}>
+                        {account.id}
+                      </Link>
+                    </td>
                     <td>{account.category}</td>
                     <td>{account.itemDescription}</td>
                     <td>{account.currencyAbbreviation}</td>
@@ -114,6 +123,17 @@ const AccountsOverviewPage = () => {
                       </span>
                     </td>
                     <td>{new Date(account.dateOfLastMovement).toLocaleDateString()}</td>
+                    <td>
+                      <Button 
+                        as={Link} 
+                        to={`/client/${foundClient.id}/account/${account.id}`}
+                        variant="outline-primary" 
+                        size="sm"
+                        title="View Account Details"
+                      >
+                        <FontAwesomeIcon icon={faEye} />
+                      </Button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
