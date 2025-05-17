@@ -138,7 +138,104 @@ export const accounts = [
       },
       bodyData: 'Body',
     },
+    // Accounts for Elena Petrova (cli004)
+    {
+      id: 'acc006',
+      clientId: 'cli004',
+      accountNumber: 'NL75INGB0004444444',
+      accountType: 'Savings',
+      balance: 12500.75,
+      currency: 'EUR',
+      status: 'Active',
+      openedDate: '2022-08-15',
+      lastActivityDate: '2023-05-10',
+      characteristics: {},
+      bodyData: 'Body',
+    },
+    {
+      id: 'acc007',
+      clientId: 'cli004',
+      accountNumber: 'NL25ABNA0005555555',
+      accountType: 'Checking',
+      balance: 1850.20,
+      currency: 'EUR',
+      status: 'Active',
+      openedDate: '2022-09-01',
+      lastActivityDate: '2023-05-15',
+      characteristics: {},
+      bodyData: 'Body',
+    },
+    // Accounts for Mohammed Al-Farsi (cli005)
+    {
+      id: 'acc008',
+      clientId: 'cli005',
+      accountNumber: 'OM12BANK00001234567890',
+      accountType: 'Checking',
+      balance: 500.00, // Pending client, lower initial balance
+      currency: 'OMR',
+      status: 'Pending Activation',
+      openedDate: '2023-01-20',
+      lastActivityDate: '2023-01-20',
+      characteristics: {},
+      bodyData: 'Body',
+    },
+    // Accounts for Sofia Müller (cli006)
+    {
+      id: 'acc009',
+      clientId: 'cli006',
+      accountNumber: 'DE89370400440532013000',
+      accountType: 'Savings',
+      balance: 8500.00,
+      currency: 'EUR',
+      status: 'Dormant', // Inactive client, dormant account
+      openedDate: '2021-03-10',
+      lastActivityDate: '2022-01-05',
+      characteristics: {},
+      bodyData: 'Body',
+    },
+    // Accounts for Kenji Tanaka (cli007)
+    {
+      id: 'acc010',
+      clientId: 'cli007',
+      accountNumber: 'JP88000100001234567890',
+      accountType: 'Investment',
+      balance: 2500000,
+      currency: 'JPY',
+      status: 'Active',
+      openedDate: '2023-04-20',
+      lastActivityDate: '2023-05-01',
+      characteristics: {},
+      bodyData: 'Body',
+    },
+    {
+      id: 'acc011',
+      clientId: 'cli007',
+      accountNumber: 'JP55000200009876543210',
+      accountType: 'Checking',
+      balance: 350000,
+      currency: 'JPY',
+      status: 'Active',
+      openedDate: '2023-04-20',
+      lastActivityDate: '2023-05-16',
+      characteristics: {},
+      bodyData: 'Body',
+    },
+    // Add an additional account for an existing client (John Doe - cli001)
+    {
+      id: 'acc012',
+      clientId: 'cli001',
+      accountNumber: 'US90CHAS0000000000000099',
+      accountType: 'Loan',
+      balance: -15000.00, // Negative balance for loan
+      currency: 'USD',
+      status: 'Active',
+      openedDate: '2023-03-01',
+      lastActivityDate: '2023-05-12',
+      characteristics: {},
+      bodyData: 'Body',
+    },
   ];
   
   export const getAccountsByClientId = (clientId) => accounts.filter(account => account.clientId === clientId);
-  export const getAccountById = (accountId) => accounts.find(account => account.id === accountId);
+  export const getAccountById = (accountId) => accounts.find(acc => acc.id === accountId);
+  export const getAllAccounts = () => accounts;

@@ -8,6 +8,7 @@ import AccountListPage from './pages/AccountListPage';
 import AccountCharacteristicsPage from './pages/AccountCharacteristicsPage';
 import AccountsOverviewPage from './pages/AccountsOverviewPage';
 import TransactionsReportPage from './pages/TransactionsReportPage';
+import AnalyticsDashboardPage from './pages/AnalyticsDashboardPage';
 
 // Import new tab content components
 import ClientGeneralInfo from './components/client_details_tabs/ClientGeneralInfo';
@@ -73,6 +74,9 @@ function App() {
 
               {/* Route for Transactions Report */}
               <Route path="/transactions-report" element={<TransactionsReportPage />} />
+
+              {/* Route for Analytics Dashboard */}
+              <Route path="/analytics" element={<AnalyticsDashboardPage />} />
 
               {/* Ruta por defecto o página no encontrada */}
               <Route path="*" element={<div><h2>404 Not Found</h2><p>La página que buscas no existe.</p></div>} />

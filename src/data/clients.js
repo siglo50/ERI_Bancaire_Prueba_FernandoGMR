@@ -90,6 +90,58 @@ export const clients = [
       controlFlags: ['Dormancy Alert'],
       accounts: ['036987452100000001'],
     },
+    {
+      id: 'cli004',
+      name: 'Elena Petrova',
+      email: 'elena.petrova@example.com',
+      phone: '+1-555-0106',
+      address: '789 Pine St, Villagetown, USA',
+      joinDate: '2022-08-10',
+      status: 'Active',
+      preferences: {
+        newsletter: true,
+        notifications: ['email', 'sms']
+      }
+    },
+    {
+      id: 'cli005',
+      name: 'Mohammed Al-Farsi',
+      email: 'mohammed.alfarsi@example.com',
+      phone: '+968-99-123456',
+      address: '456 Oasis Rd, Salalah, Oman',
+      joinDate: '2023-01-20',
+      status: 'Pending',
+      preferences: {
+        newsletter: false,
+        notifications: ['email']
+      }
+    },
+    {
+      id: 'cli006',
+      name: 'Sofia Müller',
+      email: 'sofia.muller@example.de',
+      phone: '+49-30-5550234',
+      address: '101 Hauptstrasse, Berlin, Germany',
+      joinDate: '2021-03-05',
+      status: 'Inactive',
+      preferences: {
+        newsletter: true,
+        notifications: ['email']
+      }
+    },
+    {
+      id: 'cli007',
+      name: 'Kenji Tanaka',
+      email: 'kenji.tanaka@example.jp',
+      phone: '+81-3-1234-5678',
+      address: '2-3-4 Sakura Ave, Tokyo, Japan',
+      joinDate: '2023-04-15',
+      status: 'Active',
+      preferences: {
+        newsletter: false,
+        notifications: ['sms']
+      }
+    }
   ];
   
   export const getClientById = (id) => clients.find(client => client.id === id);
@@ -99,3 +151,5 @@ export const clients = [
     const searchTerm = name.toLowerCase();
     return clients.filter(client => client.name.toLowerCase().includes(searchTerm));
   };
+
+  export const getAllClients = () => clients;
