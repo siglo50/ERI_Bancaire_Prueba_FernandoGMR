@@ -1,26 +1,21 @@
 import React from 'react';
-import { Container, Card, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 const SettingsPage = () => {
   return (
     <Container fluid className="p-4">
-      <Card>
-        <Card.Header as="h2">
-          Settings
-        </Card.Header>
-        <Card.Body>
-          <Alert variant="info">
-            <Alert.Heading>Under Construction</Alert.Heading>
-            <p>
-              This Settings page is currently pending implementation.
-            </p>
-            <hr />
-            <p className="mb-0">
-              Please check back later for updates.
-            </p>
-          </Alert>
-        </Card.Body>
-      </Card>
+      <Row>
+        <Col>
+          <Card>
+            <Card.Body>
+              <Card.Title as="h2">Settings</Card.Title>
+              <hr />
+              <p>This page is currently under construction and pending implementation.</p>
+              <p>Future settings options will appear here.</p>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 };

@@ -49,9 +49,9 @@ const AccountsOverviewPage = () => {
     <Container fluid className="p-4">
       <h2 className="mb-4">Accounts Overview</h2>
       <Form className="mb-4">
-        <Row className="align-items-center">
-          <Col md={3}>
-            <Form.Group controlId="searchType">
+        <Row className="align-items-end">
+          <Col md={3} className="d-flex align-items-end">
+            <Form.Group controlId="searchType" className="w-100">
               <Form.Label>Search by:</Form.Label>
               <Form.Select value={searchType} onChange={(e) => setSearchType(e.target.value)}>
                 <option value="id">Client ID</option>
@@ -59,8 +59,8 @@ const AccountsOverviewPage = () => {
               </Form.Select>
             </Form.Group>
           </Col>
-          <Col md={6}>
-            <Form.Group controlId="searchTerm">
+          <Col md={6} className="d-flex align-items-end">
+            <Form.Group controlId="searchTerm" className="w-100">
               <Form.Label>{searchType === 'id' ? 'Client ID' : 'Client Name'}</Form.Label>
               <Form.Control 
                 type="text" 
@@ -73,7 +73,7 @@ const AccountsOverviewPage = () => {
               </Form.Text>
             </Form.Group>
           </Col>
-          <Col md={3}>
+          <Col md={3} className="d-flex align-items-end">
             <Button variant="primary" onClick={handleSearch} className="w-100 eri-button">
               <FontAwesomeIcon icon={faSearch} className="me-2" /> Search
             </Button>

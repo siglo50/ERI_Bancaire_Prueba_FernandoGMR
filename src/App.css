@@ -50,30 +50,34 @@
     display: flex; /* Use flex for icon alignment */
     align-items: center;
     padding: 12px 20px;
-    color: var(--eri-sidebar-text);
+    color: var(--eri-sidebar-text); /* Default text/icon color on red sidebar */
     text-decoration: none;
     transition: background-color 0.2s ease, padding-left 0.2s ease, border-left-color 0.2s ease;
-    border-left: 4px solid transparent; /* Active indicator */
+    border-left: 4px solid transparent; /* Keep transparent for non-active */
     font-size: 0.95rem;
   }
   
   .sidebar-nav li a:hover {
-    background-color: var(--eri-sidebar-active-bg);
-    border-left-color: var(--eri-sidebar-active-border);
+    background-color: var(--eri-primary-red-dark); /* Darker red on hover for non-active */
+    /* border-left-color: var(--eri-sidebar-active-border); */ /* Not needed if background changes */
   }
   
   .sidebar-nav li a.active {
-    background-color: var(--eri-sidebar-active-bg);
-    border-left-color: var(--eri-sidebar-active-border);
+    background-color: var(--eri-menu-item-bg); /* Dark blue background for active link */
+    color: var(--eri-menu-item-icon-color);      /* White text/icon on blue */
+    border-left-color: transparent; /* Remove border when active with blue bg */
     font-weight: 600;
   }
   
+  .sidebar-nav li a.active .nav-icon {
+    color: var(--eri-menu-item-icon-color); /* Ensure icon color is white on blue bg */
+  }
+
   .sidebar-nav li a .nav-icon {
-    margin-right: 12px;
-    width: 20px;
-    text-align: center;
-    color: var(--eri-sidebar-icon);
-    font-size: 1.1em;
+    margin-right: 15px;
+    font-size: 1.1rem;
+    color: var(--eri-sidebar-icon); /* Default icon color on red sidebar */
+    transition: color 0.2s ease;
   }
   
   .sidebar-footer {
@@ -83,6 +87,30 @@
     flex-shrink: 0;
   }
   
+  .sidebar-footer-button {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: var(--eri-sidebar-text);
+    text-align: left;
+    text-decoration: none;
+    font-size: 0.95rem; /* Match nav links */
+  }
+
+  .sidebar-footer-button:hover {
+    background-color: var(--eri-primary-red-dark);
+    color: var(--eri-sidebar-text);
+  }
+
+  .sidebar-footer-button .nav-icon {
+    margin-right: 15px;
+    font-size: 1.1rem;
+    color: var(--eri-sidebar-icon);
+  }
+
   .sidebar-footer button {
     background-color: var(--eri-sidebar-active-bg);
     color: var(--eri-sidebar-text);
@@ -158,38 +186,45 @@
   }
   
   .topbar-icons .btn-icon {
-    color: var(--eri-primary-red); /* Red icon color */
-    background-color: var(--eri-neutral-white); /* White background */
-    border: 1px solid var(--eri-primary-red-light); /* Light red border */
-    font-size: 1rem; /* Adjusted icon size */
-    margin-left: 8px; /* Spacing between icons */
-    padding: 0; /* Remove default padding */
-    width: 32px; /* Fixed width for square shape */
-    height: 32px; /* Fixed height for square shape */
+    background-color: var(--eri-menu-item-bg); /* Dark blue background */
+    color: var(--eri-menu-item-icon-color);    /* White icon */
+    border: none; /* No border */
+    font-size: 1rem;
+    margin-left: 8px;
+    padding: 0;
+    width: 38px; /* Square shape */
+    height: 38px; /* Square shape */
     border-radius: 4px; /* Slightly rounded corners for square look */
-    display: inline-flex; /* Allows centering of the icon */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
   
   .topbar-icons .btn-icon:hover {
-    background-color: var(--eri-neutral-grey-light); /* Light grey background on hover */
-    border-color: var(--eri-primary-red); /* Stronger red border on hover */
-    color: var(--eri-primary-red-dark); /* Darker red icon on hover */
+    background-color: var(--eri-primary-blue); /* Slightly lighter blue on hover */
+    color: var(--eri-neutral-white);
   }
   
   .topbar-user {
     display: flex;
     align-items: center;
+    color: var(--eri-topbar-text);
     margin-left: 15px;
-    padding-left: 15px;
-    border-left: 1px solid var(--eri-primary-red-dark);
-    font-size: 0.85rem;
+    padding: 5px 10px;
+    background-color: var(--eri-topbar-user-bg); /* Light grey background */
+    border-radius: 4px; /* Match other buttons */
+  }
+
+  .topbar-user span {
+    margin-right: 8px;
+    font-size: 0.9rem;
+    color: var(--eri-topbar-user-icon-color); /* Dark text for name */
   }
   
-  .topbar-user span {
-    margin-right: 5px;
+  .topbar-user .svg-inline--fa { /* Targeting the FontAwesome icon */
+    color: var(--eri-topbar-user-icon-color); /* Dark icon color */
+    font-size: 1.4rem; /* Adjust size if needed */
   }
   
   .page-content {
@@ -346,13 +381,14 @@
   .sidebar-collapsed .sidebar-nav li a .nav-icon {
     margin-right: 0; /* Remove margin when text is hidden */
     /* Optional: center icon if text is hidden and link takes full width */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    /* display: block; Removed to allow parent flex to fully control centering */
+    font-size: 1.4rem; /* Adjust icon size for circular button */
+    color: var(--eri-menu-item-icon-color); /* Ensure icon is white */
+    line-height: 1; /* Can help with vertical alignment */
   }
   
   .sidebar-collapsed .sidebar-footer button .nav-icon {
-      margin-right: 0;
+    margin-right: 0;
   }
   
   .sidebar-collapsed .sidebar-header {
@@ -399,4 +435,61 @@
   .sidebar-collapsed .sidebar-toggle-btn {
     position: static; /* No longer absolute within the header */
     font-size: 1.3rem; /* Match icon size in nav */
+  }
+  
+  .sidebar-collapsed .sidebar-nav li a {
+    padding: 0;
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; /* Circular */
+    margin: 10px auto; /* Spacing and centering */
+    display: grid; /* Changed from flex to grid */
+    place-items: center; /* Shorthand for align-items: center and justify-items: center */
+    border-left: none; /* Remove any left border */
+    background-color: var(--eri-menu-item-bg); /* Dark blue background */
+    color: var(--eri-menu-item-icon-color); /* White icon */
+    transition: background-color 0.2s ease;
+  }
+
+  .sidebar-collapsed .sidebar-nav li a:hover {
+    background-color: var(--eri-primary-blue); /* Slightly lighter blue on hover */
+  }
+
+  .sidebar-collapsed .sidebar-nav li a.active {
+    background-color: var(--eri-primary-blue); /* Or a distinct active color if desired, e.g., slightly lighter/darker blue */
+    /* Example: box-shadow: inset 0 0 0 2px var(--eri-neutral-white); */ /* Optional: white inner ring for active */
+  }
+  
+  .sidebar-collapsed .sidebar-nav li a .nav-icon {
+    margin-right: 0; 
+    /* display: block; Removed to allow parent flex to fully control centering */
+    font-size: 1.4rem; /* Adjust icon size for circular button */
+    color: var(--eri-menu-item-icon-color); /* Ensure icon is white */
+    line-height: 1; /* Can help with vertical alignment */
+  }
+  
+  .sidebar-collapsed .sidebar-footer-button {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    margin: 10px auto;
+    display: grid; /* Using grid for centering as with nav links */
+    place-items: center;
+    padding: 0;
+    background-color: var(--eri-menu-item-bg); /* Match collapsed nav items */
+  }
+
+  .sidebar-collapsed .sidebar-footer-button .nav-icon {
+    margin-right: 0;
+    font-size: 1.4rem; /* Match collapsed nav icons */
+    color: var(--eri-menu-item-icon-color);
+  }
+
+  .sidebar-collapsed .sidebar-footer-button:hover {
+    background-color: var(--eri-primary-blue); /* Match collapsed nav items hover */
+  }
+
+  /* Specific adjustments for Table Action Buttons */
+  .table-action-button {
+    /* ... */
   }

@@ -10,6 +10,7 @@ import AccountsOverviewPage from './pages/AccountsOverviewPage';
 import TransactionsReportPage from './pages/TransactionsReportPage';
 import AnalyticsDashboardPage from './pages/AnalyticsDashboardPage';
 import SettingsPage from './pages/SettingsPage';
+import LogoutPage from './pages/LogoutPage';
 
 // Import new tab content components
 import ClientGeneralInfo from './components/client_details_tabs/ClientGeneralInfo';
@@ -81,6 +82,9 @@ function App() {
 
               {/* Route for Settings Page */}
               <Route path="/settings" element={<SettingsPage />} />
+
+              {/* Route for Logout Page */}
+              <Route path="/logout" element={<LogoutPage />} />
 
               {/* Ruta por defecto o página no encontrada */}
               <Route path="*" element={<div><h2>404 Not Found</h2><p>La página que buscas no existe.</p></div>} />

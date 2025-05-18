@@ -62,10 +62,10 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
         </ul>
       </nav>
       <div className="sidebar-footer">
-        <button type="button" title="Logout">
+        <NavLink to="/logout" title="Logout" className="sidebar-footer-button">
           <FontAwesomeIcon icon={faSignOutAlt} className="nav-icon" /> 
           {!isCollapsed && <span>Logout</span>}
-        </button>
+        </NavLink>
       </div>
     </aside>
   );

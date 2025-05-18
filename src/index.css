@@ -103,6 +103,13 @@ code {
   --eri-status-inactive-text: #721c24;
 
   --eri-border-color: #dee2e6;
+
+  /* New variables for specific menu item styling based on image */
+  --eri-menu-item-bg: var(--eri-primary-blue-dark); /* #001f3f - For menu item backgrounds */
+  --eri-menu-item-icon-color: var(--eri-neutral-white); /* #ffffff - For icons/text on menu items */
+  
+  --eri-topbar-user-bg: var(--eri-neutral-grey-light); /* #f8f9fa - For user icon background */
+  --eri-topbar-user-icon-color: var(--eri-neutral-black); /* #212529 - For user icon color */
 }
 
 /* General Button Styles */

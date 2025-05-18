@@ -86,9 +86,9 @@ const TransactionsReportPage = () => {
     <Container fluid className="p-4">
       <h2 className="mb-4">Transactions Report</h2>
       <Form className="mb-4">
-        <Row className="align-items-center">
-          <Col md={9}>
-            <Form.Group controlId="accountIdSearch">
+        <Row className="align-items-end">
+          <Col md={9} className="d-flex align-items-end">
+            <Form.Group controlId="accountIdSearch" className="w-100">
               <Form.Label>Account ID</Form.Label>
               <Form.Control 
                 type="text" 
@@ -102,7 +102,7 @@ const TransactionsReportPage = () => {
               </Form.Text>
             </Form.Group>
           </Col>
-          <Col md={3}>
+          <Col md={3} className="d-flex align-items-end">
             <Button variant="primary" onClick={handleSearch} className="w-100 eri-button">
               <FontAwesomeIcon icon={faSearch} className="me-2" /> Search Transactions
             </Button>
