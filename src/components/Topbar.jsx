@@ -2,7 +2,15 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Breadcrumb } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faFilter, faBuilding, faSearch, faUserCircle, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faSearch, 
+  faBuildingColumns, 
+  faFileInvoiceDollar, 
+  faChartBar, 
+  faCog, 
+  faUserCircle, 
+  faChevronRight 
+} from '@fortawesome/free-solid-svg-icons';
 
 // Helper function to generate breadcrumbs (simplified version)
 const generateBreadcrumbs = (pathname) => {
@@ -45,18 +53,21 @@ const Topbar = () => {
       </div>
       <div className="topbar-right">
         <div className="topbar-icons">
-          <button className="btn-icon">
-            <FontAwesomeIcon icon={faUser} />
-          </button>
-          <button className="btn-icon">
-            <FontAwesomeIcon icon={faFilter} />
-          </button>
-          <button className="btn-icon">
-            <FontAwesomeIcon icon={faBuilding} />
-          </button>
-          <button className="btn-icon">
+          <Link to="/search" title="Client Search" className="btn-icon">
             <FontAwesomeIcon icon={faSearch} />
-          </button>
+          </Link>
+          <Link to="/accounts-overview" title="Accounts Overview" className="btn-icon">
+            <FontAwesomeIcon icon={faBuildingColumns} />
+          </Link>
+          <Link to="/transactions-report" title="Transactions Report" className="btn-icon">
+            <FontAwesomeIcon icon={faFileInvoiceDollar} />
+          </Link>
+          <Link to="/analytics" title="Analytics" className="btn-icon">
+            <FontAwesomeIcon icon={faChartBar} />
+          </Link>
+          <Link to="/settings" title="Settings" className="btn-icon">
+            <FontAwesomeIcon icon={faCog} />
+          </Link>
         </div>
         <div className="topbar-user">
           <span>Fernando GMR</span>

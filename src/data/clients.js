@@ -98,6 +98,9 @@ export const clients = [
       address: '789 Pine St, Villagetown, USA',
       joinDate: '2022-08-10',
       status: 'Active',
+      manager: 'Manager Delta',
+      clientType: 'Retail Standard',
+      centre: 'Online Branch',
       preferences: {
         newsletter: true,
         notifications: ['email', 'sms']
@@ -111,6 +114,9 @@ export const clients = [
       address: '456 Oasis Rd, Salalah, Oman',
       joinDate: '2023-01-20',
       status: 'Pending',
+      manager: 'Manager Epsilon',
+      clientType: 'Retail VIP',
+      centre: 'City West Branch',
       preferences: {
         newsletter: false,
         notifications: ['email']
@@ -124,6 +130,9 @@ export const clients = [
       address: '101 Hauptstrasse, Berlin, Germany',
       joinDate: '2021-03-05',
       status: 'Inactive',
+      manager: 'Manager Zeta',
+      clientType: 'Corporate SME',
+      centre: 'International Desk',
       preferences: {
         newsletter: true,
         notifications: ['email']
@@ -137,6 +146,9 @@ export const clients = [
       address: '2-3-4 Sakura Ave, Tokyo, Japan',
       joinDate: '2023-04-15',
       status: 'Active',
+      manager: 'Manager Eta',
+      clientType: 'Retail Standard',
+      centre: 'Metro East Branch',
       preferences: {
         newsletter: false,
         notifications: ['sms']
