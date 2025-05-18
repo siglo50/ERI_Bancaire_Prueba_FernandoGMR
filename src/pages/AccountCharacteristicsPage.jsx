@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Card, ListGroup, Badge, Button, Row, Col, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faEdit, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { accounts } from '../data/accounts'; 
 import { getTransactionsByAccountId } from '../data/transactions'; 
 
@@ -83,9 +83,7 @@ function AccountCharacteristicsPage() {
             <Link to={`/client/${clientId}/accounts`} className="btn btn-outline-secondary btn-sm me-2">
               <FontAwesomeIcon icon={faArrowLeft} /> Back to Account List
             </Link>
-            <Button variant="outline-primary" size="sm">
-              <FontAwesomeIcon icon={faEdit} /> Edit
-            </Button>
+            {/* Removed Edit Button */}
           </Col>
         </Row>
       </Card.Header>

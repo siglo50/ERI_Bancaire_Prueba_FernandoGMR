@@ -94,11 +94,6 @@ const AccountListPage = () => {
 
   return (
     <div>
-      <div className="d-flex justify-content-end mb-3">
-        <Button variant="success btn-sm" as={Link} to={`/client/${clientId}/account/new`}>
-          <FontAwesomeIcon icon={faPlusCircle} className="icon-action" /> New Account
-        </Button>
-      </div>
       <Table striped bordered hover responsive size="sm">
         <thead>
           <tr>

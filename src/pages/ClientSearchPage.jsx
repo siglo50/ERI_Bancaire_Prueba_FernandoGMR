@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Table, Pagination, InputGroup, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUserPlus, faEye, faEdit, faTrashAlt, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faEye, faTrashAlt, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { clients as mockClients } from '../data/clients';
 
 const ClientSearchPage = () => {
@@ -111,9 +111,6 @@ const ClientSearchPage = () => {
           <div className="col-md-2 col-lg-2 d-flex align-items-end">
           </div>
           <div className="col-md-12 col-lg-3 d-flex align-items-end justify-content-lg-end">
-            <Button variant="success" as={Link} to="/clients/new" className="w-100 w-lg-auto">
-              <FontAwesomeIcon icon={faUserPlus} className="icon-action" /> New Client
-            </Button>
           </div>
         </div>
       </Form>
@@ -162,9 +159,6 @@ const ClientSearchPage = () => {
                   <td>
                     <Button variant="link" as={Link} to={`/client/${client.id}`} title="View Details" className="p-1 me-1">
                       <FontAwesomeIcon icon={faEye} />
-                    </Button>
-                    <Button variant="link" as={Link} to={`/client/${client.id}/edit`} title="Edit Client" className="p-1 me-1">
-                      <FontAwesomeIcon icon={faEdit} />
                     </Button>
                     <Button variant="link" title="Delete Client" className="p-1 text-danger">
                       <FontAwesomeIcon icon={faTrashAlt} />
