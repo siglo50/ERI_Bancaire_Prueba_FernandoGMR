@@ -103,7 +103,9 @@ function AccountCharacteristicsPage() {
                     </td>
                     <td>{txn.type}</td>
                     <td className="text-end">
-                      {txn.balance.toLocaleString(undefined, { style: 'currency', currency: account.currency || 'EUR' })}
+                      {typeof txn.balance === 'number' && !isNaN(txn.balance)
+                        ? txn.balance.toLocaleString(undefined, { style: 'currency', currency: account.currency || 'EUR' })
+                        : 'N/A'}
                     </td>
                   </tr>
                 ))}

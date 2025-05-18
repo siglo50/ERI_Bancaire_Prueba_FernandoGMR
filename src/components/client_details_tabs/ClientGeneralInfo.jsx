@@ -18,7 +18,8 @@ const ClientGeneralInfo = () => {
     status: client.status || 'N/A',
     email: client.email || 'N/A',
     root: client.root || 'N/A',
-    office: client.office || 'Main Office', 
+    office: client.office || 'Main Office',
+    centre: client.centre || 'N/A',
     manager: client.manager || 'John Manager',
     creationDate: client.creationDate ? new Date(client.creationDate).toLocaleDateString() : 'N/A',
     lastActivityDate: client.lastActivityDate ? new Date(client.lastActivityDate).toLocaleDateString() : 'N/A',
@@ -40,6 +41,7 @@ const ClientGeneralInfo = () => {
             <Col md={6}>
               <ListGroup.Item><strong>Root:</strong> {clientData.root}</ListGroup.Item>
               <ListGroup.Item><strong>Office:</strong> {clientData.office}</ListGroup.Item>
+              <ListGroup.Item><strong>Centre:</strong> {clientData.centre}</ListGroup.Item>
               <ListGroup.Item><strong>Manager:</strong> {clientData.manager}</ListGroup.Item>
               <ListGroup.Item><strong>Creation Date:</strong> {clientData.creationDate}</ListGroup.Item>
               <ListGroup.Item><strong>Last Activity:</strong> {clientData.lastActivityDate}</ListGroup.Item>

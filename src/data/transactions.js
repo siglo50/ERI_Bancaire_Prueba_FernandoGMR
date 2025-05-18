@@ -3,6 +3,9 @@ export let transactions = [
   {
     accountId: '015454156909782034',
     transactions: [
+      { id: 'txn103', date: '2024-05-18', description: 'Bookstore "Shakespeare & Co"', amount: -42.10, type: 'Debit', balance: 12423.16, valueDate: '2024-05-18', category: 'Shopping' },
+      { id: 'txn102', date: '2024-05-17', description: 'Online Course - Coursera', amount: -29.99, type: 'Debit', balance: 12465.26, valueDate: '2024-05-17', category: 'Education' },
+      { id: 'txn101', date: '2024-05-16', description: 'Coffee "Le Procope"', amount: -5.50, type: 'Debit', balance: 12495.25, valueDate: '2024-05-16', category: 'Dining' },
       { id: 'txn001', date: '2024-05-15', description: 'Salary Deposit - ACME Corp', amount: 3200.00, type: 'Credit', balance: 12500.75, valueDate: '2024-05-15', category: 'Income' },
       { id: 'txn002', date: '2024-05-14', description: 'Supermarket "Le Bon Marché"', amount: -85.60, type: 'Debit', balance: 9300.75, valueDate: '2024-05-14', category: 'Groceries' },
       { id: 'txn003', date: '2024-05-12', description: 'Online Purchase - FNAC Books', amount: -45.99, type: 'Debit', balance: 9386.35, valueDate: '2024-05-12', category: 'Shopping' },
@@ -33,6 +36,8 @@ export let transactions = [
   {
     accountId: '025789333101012345',
     transactions: [
+      { id: 'txn105', date: '2024-05-18', description: 'Software License - Adobe CC', amount: -899.00, type: 'Debit', balance: 174181.70, valueDate: '2024-05-18', category: 'Software' },
+      { id: 'txn104', date: '2024-05-17', description: 'Office Supplies - Bureau Vallée', amount: -150.20, type: 'Debit', balance: 175080.70, valueDate: '2024-05-17', category: 'Office Supplies' },
       { id: 'txn016', date: '2024-05-16', description: 'Payment Received - Client A', amount: 15000.00, type: 'Credit', balance: 175230.90, valueDate: '2024-05-16', category: 'Client Payment' },
       { id: 'txn017', date: '2024-05-15', description: 'Supplier Payment - Supplier X', amount: -7500.00, type: 'Debit', balance: 160230.90, valueDate: '2024-05-15', category: 'Supplier Payment' },
       { id: 'txn018', date: '2024-05-14', description: 'Office Rent Q2', amount: -4500.00, type: 'Debit', balance: 167730.90, valueDate: '2024-05-14', category: 'Operating Expenses' },
