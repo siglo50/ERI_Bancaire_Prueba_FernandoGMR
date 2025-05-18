@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Card, ListGroup, Badge, Button, Row, Col, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faEdit } from '@fortawesome/free-solid-svg-icons';
-import { accounts } from '../data/accounts'; // Assuming accounts data is here
-import { getTransactionsByAccountId } from '../data/transactions'; // Import transaction data function
+import { faArrowLeft, faEdit, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { accounts } from '../data/accounts'; 
+import { getTransactionsByAccountId } from '../data/transactions'; 
 
-// Placeholder function to get a single account by ID
-// This should ideally be moved to data/accounts.js or a service file
 const getAccountById = (accountId) => {
   return accounts.find(acc => acc.id === accountId);
 };
@@ -15,7 +13,8 @@ const getAccountById = (accountId) => {
 function AccountCharacteristicsPage() {
   const { clientId, accountId } = useParams();
   const [account, setAccount] = useState(null);
-  const [accountTransactions, setAccountTransactions] = useState([]); // State for transactions
+  const [accountTransactions, setAccountTransactions] = useState([]); 
+  const [sortConfig, setSortConfig] = useState({ key: 'date', direction: 'descending' }); 
 
   useEffect(() => {
     const fetchedAccount = getAccountById(accountId);
@@ -23,17 +22,57 @@ function AccountCharacteristicsPage() {
     if (fetchedAccount) {
       const transactions = getTransactionsByAccountId(accountId);
       setAccountTransactions(transactions);
+      setSortConfig({ key: 'date', direction: 'descending' }); 
     }
   }, [accountId]);
+
+  const sortedAccountTransactions = useMemo(() => {
+    let sortableTransactions = [...accountTransactions];
+    if (sortConfig.key !== null) {
+      sortableTransactions.sort((a, b) => {
+        let valA = a[sortConfig.key];
+        let valB = b[sortConfig.key];
+
+        if (['date', 'valueDate'].includes(sortConfig.key)) {
+          valA = new Date(valA);
+          valB = new Date(valB);
+        } else if (['amount', 'balance'].includes(sortConfig.key)) { 
+          valA = parseFloat(valA);
+          valB = parseFloat(valB);
+        }
+
+        if (valA < valB) return sortConfig.direction === 'ascending' ? -1 : 1;
+        if (valA > valB) return sortConfig.direction === 'ascending' ? 1 : -1;
+        return 0;
+      });
+    }
+    return sortableTransactions;
+  }, [accountTransactions, sortConfig]);
+
+  const requestSortForTransactions = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key) {
+      direction = sortConfig.direction === 'ascending' ? 'descending' : 'ascending';
+    } else if (['date', 'valueDate'].includes(key)) {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const getSortIconForTransactions = (columnKey) => {
+    if (sortConfig.key === columnKey) {
+      return sortConfig.direction === 'ascending' ? faSortUp : faSortDown;
+    }
+    return faSort;
+  };
 
   if (!account) {
     return <div>Loading account details... or Account not found.</div>;
   }
 
-  // Placeholder data for fields not in current accounts.js
-  const currencyAbbreviation = account.currency || 'N/A'; // Assuming 'currency' field might exist or be added
-  const itemDescription = account.description || 'N/A'; // Assuming 'description' field might exist or be added
-  const dateOfLastMovement = account.lastMovementDate || 'N/A'; // Assuming 'lastMovementDate' field might exist or be added
+  const currencyAbbreviation = account.currency || 'N/A'; 
+  const itemDescription = account.description || 'N/A'; 
+  const dateOfLastMovement = account.lastMovementDate || 'N/A'; 
 
   return (
     <Card className="mt-3">
@@ -59,7 +98,7 @@ function AccountCharacteristicsPage() {
             <strong>Currency Abbreviation:</strong> {currencyAbbreviation}
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>Category:</strong> {account.type} {/* Mapping 'type' to 'Category' */}
+            <strong>Category:</strong> {account.type} 
           </ListGroup.Item>
           <ListGroup.Item>
             <strong>Item Description:</strong> {itemDescription}
@@ -75,24 +114,23 @@ function AccountCharacteristicsPage() {
           </ListGroup.Item>
         </ListGroup>
 
-        {/* Transactions Table Section */}
         {accountTransactions.length > 0 ? (
           <div className="mt-4">
             <h5>Account Transactions</h5>
             <Table striped bordered hover responsive size="sm" className="mt-3">
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Value Date</th>
-                  <th>Description</th>
-                  <th>Category</th>
-                  <th className="text-end">Amount</th>
-                  <th>Type</th>
-                  <th className="text-end">Balance</th>
+                  <th onClick={() => requestSortForTransactions('date')} style={{ cursor: 'pointer' }}>Date <FontAwesomeIcon icon={getSortIconForTransactions('date')} /></th>
+                  <th onClick={() => requestSortForTransactions('valueDate')} style={{ cursor: 'pointer' }}>Value Date <FontAwesomeIcon icon={getSortIconForTransactions('valueDate')} /></th>
+                  <th onClick={() => requestSortForTransactions('description')} style={{ cursor: 'pointer' }}>Description <FontAwesomeIcon icon={getSortIconForTransactions('description')} /></th>
+                  <th onClick={() => requestSortForTransactions('category')} style={{ cursor: 'pointer' }}>Category <FontAwesomeIcon icon={getSortIconForTransactions('category')} /></th>
+                  <th onClick={() => requestSortForTransactions('amount')} style={{ cursor: 'pointer' }} className="text-end">Amount <FontAwesomeIcon icon={getSortIconForTransactions('amount')} /></th>
+                  <th onClick={() => requestSortForTransactions('type')} style={{ cursor: 'pointer' }}>Type <FontAwesomeIcon icon={getSortIconForTransactions('type')} /></th>
+                  <th onClick={() => requestSortForTransactions('balance')} style={{ cursor: 'pointer' }} className="text-end">Balance <FontAwesomeIcon icon={getSortIconForTransactions('balance')} /></th>
                 </tr>
               </thead>
               <tbody>
-                {accountTransactions.map(txn => (
+                {sortedAccountTransactions.map(txn => (
                   <tr key={txn.id}>
                     <td>{new Date(txn.date).toLocaleDateString()}</td>
                     <td>{new Date(txn.valueDate).toLocaleDateString()}</td>

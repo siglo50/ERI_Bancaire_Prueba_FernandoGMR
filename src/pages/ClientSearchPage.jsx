@@ -1,37 +1,69 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Table, Pagination, InputGroup, Badge } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faUserPlus, faEye, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { clients as mockClients } from '../data/clients'; // Assuming clients.js is in ../data/
+import { faSearch, faUserPlus, faEye, faEdit, faTrashAlt, faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { clients as mockClients } from '../data/clients';
 
 const ClientSearchPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterType, setFilterType] = useState(''); // Example filter
+  const [filterType, setFilterType] = useState('');
   const [filteredClients, setFilteredClients] = useState(mockClients);
   const [currentPage, setCurrentPage] = useState(1);
   const clientsPerPage = 10;
+  const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'ascending' });
 
   useEffect(() => {
-    let results = mockClients;
+    let results = [...mockClients];
     if (searchTerm) {
       results = results.filter(client =>
         client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        client.id.toLowerCase().includes(searchTerm.toLowerCase())
+        (client.id && client.id.toLowerCase().includes(searchTerm.toLowerCase()))
       );
     }
     if (filterType) {
       results = results.filter(client => client.clientType === filterType);
     }
     setFilteredClients(results);
-    setCurrentPage(1); // Reset to first page on new search/filter
+    setCurrentPage(1);
   }, [searchTerm, filterType]);
 
-  // Pagination logic
+  const sortedClients = useMemo(() => {
+    let sortableClients = [...filteredClients];
+    if (sortConfig.key !== null) {
+      sortableClients.sort((a, b) => {
+        if (a[sortConfig.key] < b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? -1 : 1;
+        }
+        if (a[sortConfig.key] > b[sortConfig.key]) {
+          return sortConfig.direction === 'ascending' ? 1 : -1;
+        }
+        return 0;
+      });
+    }
+    return sortableClients;
+  }, [filteredClients, sortConfig]);
+
+  const requestSort = (key) => {
+    let direction = 'ascending';
+    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
+    setCurrentPage(1);
+  };
+
+  const getSortIcon = (columnKey) => {
+    if (sortConfig.key === columnKey) {
+      return sortConfig.direction === 'ascending' ? faSortUp : faSortDown;
+    }
+    return faSort;
+  };
+
   const indexOfLastClient = currentPage * clientsPerPage;
   const indexOfFirstClient = indexOfLastClient - clientsPerPage;
-  const currentClients = filteredClients.slice(indexOfFirstClient, indexOfLastClient);
-  const totalPages = Math.ceil(filteredClients.length / clientsPerPage);
+  const currentClients = sortedClients.slice(indexOfFirstClient, indexOfLastClient);
+  const totalPages = Math.ceil(sortedClients.length / clientsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -73,12 +105,10 @@ const ClientSearchPage = () => {
                 <option value="Retail Premium">Retail Premium</option>
                 <option value="Retail Standard">Retail Standard</option>
                 <option value="Corporate">Corporate</option>
-                {/* Add more types as needed */}
               </Form.Select>
             </Form.Group>
           </div>
           <div className="col-md-2 col-lg-2 d-flex align-items-end">
-            {/* <Button variant="primary-eri" type="submit" className="w-100">Search</Button> */}
           </div>
           <div className="col-md-12 col-lg-3 d-flex align-items-end justify-content-lg-end">
             <Button variant="success" as={Link} to="/clients/new" className="w-100 w-lg-auto">
@@ -93,12 +123,24 @@ const ClientSearchPage = () => {
           <Table striped bordered hover responsive size="sm">
             <thead>
               <tr>
-                <th>Client ID</th>
-                <th>Name</th>
-                <th>Client Type</th>
-                <th>Manager</th>
-                <th>Centre</th>
-                <th>Status</th>
+                <th onClick={() => requestSort('id')} style={{ cursor: 'pointer' }}>
+                  Client ID <FontAwesomeIcon icon={getSortIcon('id')} />
+                </th>
+                <th onClick={() => requestSort('name')} style={{ cursor: 'pointer' }}>
+                  Name <FontAwesomeIcon icon={getSortIcon('name')} />
+                </th>
+                <th onClick={() => requestSort('clientType')} style={{ cursor: 'pointer' }}>
+                  Client Type <FontAwesomeIcon icon={getSortIcon('clientType')} />
+                </th>
+                <th onClick={() => requestSort('manager')} style={{ cursor: 'pointer' }}>
+                  Manager <FontAwesomeIcon icon={getSortIcon('manager')} />
+                </th>
+                <th onClick={() => requestSort('centre')} style={{ cursor: 'pointer' }}>
+                  Centre <FontAwesomeIcon icon={getSortIcon('centre')} />
+                </th>
+                <th onClick={() => requestSort('status')} style={{ cursor: 'pointer' }}>
+                  Status <FontAwesomeIcon icon={getSortIcon('status')} />
+                </th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -135,7 +177,7 @@ const ClientSearchPage = () => {
 
           {totalPages > 1 && (
             <div className="pagination-controls">
-                <span>Showing {indexOfFirstClient + 1} to {Math.min(indexOfLastClient, filteredClients.length)} of {filteredClients.length} clients</span>
+                <span>Showing {indexOfFirstClient + 1} to {Math.min(indexOfLastClient, sortedClients.length)} of {sortedClients.length} clients</span>
                 <Pagination>
                     <Pagination.Prev onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1} />
                     {[...Array(totalPages).keys()].map(number => (
