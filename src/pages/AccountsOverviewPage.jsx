@@ -49,7 +49,7 @@ const AccountsOverviewPage = () => {
     <Container fluid className="p-4">
       <h2 className="mb-4">Accounts Overview</h2>
       <Form className="mb-4">
-        <Row className="align-items-end">
+        <Row className="align-items-center">
           <Col md={3}>
             <Form.Group controlId="searchType">
               <Form.Label>Search by:</Form.Label>
@@ -73,7 +73,7 @@ const AccountsOverviewPage = () => {
               </Form.Text>
             </Form.Group>
           </Col>
-          <Col md={3} className="d-flex align-items-end">
+          <Col md={3}>
             <Button variant="primary" onClick={handleSearch} className="w-100 eri-button">
               <FontAwesomeIcon icon={faSearch} className="me-2" /> Search
             </Button>
