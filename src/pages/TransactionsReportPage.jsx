@@ -86,9 +86,9 @@ const TransactionsReportPage = () => {
     <Container fluid className="p-4">
       <h2 className="mb-4">Transactions Report</h2>
       <Form className="mb-4">
-        <Row className="align-items-end">
-          <Col md={9} className="d-flex align-items-end">
-            <Form.Group controlId="accountIdSearch" className="w-100">
+        <Row className="align-items-end mb-1">
+          <Col md={9}>
+            <Form.Group controlId="accountIdSearch" className="w-100 mb-0">
               <Form.Label>Account ID</Form.Label>
               <Form.Control 
                 type="text" 
@@ -97,9 +97,6 @@ const TransactionsReportPage = () => {
                 onChange={(e) => setAccountIdSearch(e.target.value)}
                 onKeyPress={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleSearch(); } }}
               />
-              <Form.Text className="text-muted">
-                Example: 015454156909782034
-              </Form.Text>
             </Form.Group>
           </Col>
           <Col md={3} className="d-flex align-items-end">
@@ -107,6 +104,14 @@ const TransactionsReportPage = () => {
               <FontAwesomeIcon icon={faSearch} className="me-2" /> Search Transactions
             </Button>
           </Col>
+        </Row>
+        <Row>
+          <Col md={9}>
+            <Form.Text className="text-muted">
+              Example: 015454156909782034
+            </Form.Text>
+          </Col>
+          <Col md={3} /> 
         </Row>
       </Form>
 
